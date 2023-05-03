@@ -89,7 +89,7 @@ pkgs.mkShell {
   echo "  1. git clone https://github.com/bitcoin/bitcoin.git"
   echo "  2. cd bitcoin"
   echo "  3. ./autogen.sh"
-  echo "  4. ./configure"
+  echo "  4. ./configure --without-gui --with-wallet (./configure -help for options)"
   echo "  5. make"
   echo "  6. make check (optional)"
   echo ""
