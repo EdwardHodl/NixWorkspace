@@ -1,0 +1,21 @@
+[submodule "RTL/RTL"]
+	path = RTL/RTL
+	url = https://github.com/Ride-The-Lightning/RTL
+[submodule "RTL/c-lightning-REST"]
+	path = RTL/c-lightning-REST
+	url = https://github.com/Ride-The-Lightning/c-lightning-REST
+[submodule "System/tpm"]
+	path = System/tpm
+	url = https://github.com/tmux-plugins/tpm
+[submodule "Bitcoin/bitcoin"]
+	path = Bitcoin/bitcoin
+	url = https://github.com/bitcoin/bitcoin
+[submodule "Electrum/electrs"]
+	path = Electrum/electrs
+	url = https://github.com/romanz/electrs
+[submodule "Mempool/mempool"]
+	path = Mempool/mempool
+	url = https://github.com/mempool/mempool
+[submodule "Lightning/lightning"]
+	path = Lightning/lightning
+	url = https://github.com/ElementsProject/lightning

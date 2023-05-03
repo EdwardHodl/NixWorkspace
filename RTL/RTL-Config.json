@@ -1,0 +1,33 @@
+{
+  "port": "3000",
+  "defaultNodeIndex": 1,
+  "SSO": {
+    "rtlSSO": 0,
+    "rtlCookiePath": "",
+    "logoutRedirectLink": ""
+  },
+  "nodes": [
+    {
+      "index": 1,
+      "lnNode": "Core Lightning Lapbox",
+      "lnImplementation": "CLN",
+      "Authentication": {
+        "macaroonPath": "/home/edward/NixWorkspace/RTL/c-lightning-REST/certs/",
+        "configPath": "/home/edward/.lightning/bitcoin/"
+      },
+      "Settings": {
+        "userPersona": "OPERATOR",
+        "themeMode": "NIGHT",
+        "themeColor": "INDIGO",
+        "logLevel": "DEBUG",
+        "lnServerUrl": "http://127.0.0.1:3001",
+        "swapServerUrl": "http://127.0.0.1:8081",
+        "boltzServerUrl": "http://127.0.0.1:9003",
+        "fiatConversion": false,
+        "unannouncedChannels": false,
+        "enableOffers": true
+      }
+    }
+  ],
+  "multiPassHashed": "4f5d8c536e8811e73dc1deeea1942c34110290a0a7f396e068678b73188c1e7d"
+}
