@@ -1,32 +1,10 @@
-{ pkgs ? import <nixpkgs> { inherit (builtins) currentSystem; } }:
+{ pkgs ? import <nixpkgs> { } }:
 
 # Dependencies from bitcoin/bitcoin
 # https://github.com/bitcoin/bitcoin/blob/master/doc/dependencies.md
 
-
-# Choose the appropriate package based on the system
-let
-  system = builtins.currentSystem;
-  
-  # clib = {
-  #  "x86_64-linux" = pkgs.glibc;
-  #  "aarch64-linux" = pkgs.glibc;
-  #  "x86_64-darwin" = pkgs.darwin.Libc;
-  #  "aarch64-darwin" = pkgs.darwin.Libc;
-  #}.${system};
-  # A build with gcc doesn't need glibc: https://github.com/NixOS/nixpkgs/pull/28748
-
-  linuxkernel = {
-    "x86_64-linux" = pkgs.linuxKernel.packages.linux_hardened.kernel;
-    "i686-linux" = pkgs.linuxKernel.packages.linux_hardened.kernel;
-    "aarch64-linux" = pkgs.linuxKernel.packages.linux_hardened.kernel;
-    "x86_64-darwin" = "";
-    "aarch64-darwin" = "";
-  }.${system};
-
-in
 pkgs.mkShell {
-  nativeBuildInputs = [
+  buildInputs = [
     pkgs.vim
     pkgs.less
     pkgs.git
@@ -42,8 +20,7 @@ pkgs.mkShell {
     
     pkgs.boost
     pkgs.libevent
-    #clib
-    linuxkernel
+    pkgs.linuxKernel.packages.linux_hardened.kernel
 
     pkgs.libtool
     pkgs.hexdump
@@ -77,8 +54,8 @@ pkgs.mkShell {
     alias
 
     echo "Hello shell"
-    echo "Running on system: ${system}"
-    echo "Switched linuxkernel to: ${linuxkernel}"
+    echo "In Nix Shell: $IN_NIX_SHELL"
+    echo "Running on system: $CURRENT_SYSTEM"
     echo "C Compiler, CC: $CC. "; which $CC
     echo "Dynamic Library Linker, LD: $LD. "; which $LD
 

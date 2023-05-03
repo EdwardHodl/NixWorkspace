@@ -12,4 +12,5 @@
       ./ssh.nix
       ../serviceconfig.nix
     ];
+  nix.settings.experimental-features = ["nix-command" "flakes"];
 }
