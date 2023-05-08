@@ -3,5 +3,5 @@ log/
 logs/
 secret/
 result/
-nix/store/
 *.swp
+Bitcoin/result
