@@ -7,6 +7,7 @@
 {
   imports =
     [
+      <nixos-hardware/lenovo/thinkpad/e495/default.nix>
       ./power.nix
       ./net.nix
       ./ssh.nix
