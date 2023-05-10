@@ -16,8 +16,23 @@
 
   # Open ports in the firewall.
   # Or disable the firewall altogether.
-  # networking.firewall.enable = false;
-  
+  networking.firewall.enable = true;
+ 
+  services.avahi = {
+    enable = true;
+    nssmdns = true;
+    wideArea = false;
+    reflector = true;
+    domainName = "local";
+    publish = {
+      enable = true;
+      addresses = true;
+      workstation = false;
+      domain = true;
+    };
+    openFirewall = true; # UDP port 5353
+  };
+ 
   # 3000 - RTL
   # 4001 - RTL docs
   # 4200 - mempool
@@ -37,4 +52,3 @@
     protonvpn-cli killswitch --on
   '';
 }
-

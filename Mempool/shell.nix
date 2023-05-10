@@ -18,6 +18,7 @@ pkgs.mkShell {
 
   shellHook = ''
 
+
     export MEMPOOL_CONFIG_FILE="/home/edward/NixWorkspace/Mempool/mempool-config.json"
     echo "Set MEMPOOL_CONFIG_FILE to $MEMPOOL_CONFIG_FILE"
 
@@ -77,7 +78,9 @@ echo "   npm run config:defaults:mempool && npm run cypress:run"
 echo "   npm run config:defaults:mempool && npm run cypress:open"
 echo ""
 echo "======================================"
-
+alias mempoolbackend='cd mempool/backend && npm run start'
+alias mempoolfrontend='cd mempool/frontend && npm run serve'
+alias
   '';
 }
 

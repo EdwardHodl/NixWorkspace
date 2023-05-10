@@ -81,6 +81,10 @@ pkgs.mkShell {
   echo "  - To update: cd RTL; git reset --hard HEAD; git clean -f -d; git pull; npm install --omit=dev"
   echo "  - To remove: rm -rf RTL"
   echo "----------------------------------------"
+  alias clnrest="cd c-lightning-REST && node cl-rest.js"
+  alias rtl="cd RTL && node rtl"
+  alias
+
   '';
 }
 

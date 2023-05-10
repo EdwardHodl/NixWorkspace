@@ -5,3 +5,6 @@ secret/
 result/
 *.swp
 Bitcoin/result
+System/result
+result/
+/result
