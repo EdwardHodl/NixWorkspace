@@ -6,7 +6,7 @@ with pkgs;
 
 stdenv.mkDerivation {
   name = "NostrShell";
-  buildInputs = [];
+  buildInputs = [ nix git ];
   shellHook = ''
     # Add custom shell initialization here
     cd primal-caching-service
