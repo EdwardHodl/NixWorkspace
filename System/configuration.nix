@@ -7,7 +7,9 @@
 {
   imports =
     [
+      # enabled with adding the nixos-hardware channel.
       <nixos-hardware/lenovo/thinkpad/e495/default.nix>
+
       ./power.nix
       ./net.nix
       ./ssh.nix
