@@ -39,7 +39,8 @@
   # 1122 - mosh alternative
   # 8080 - RTL
   # 50001 - Electrum Server
-  networking.firewall.allowedTCPPorts = [ 22 1122 3000 4001 4200 8080 50001 ];
+  # 8801 - (nostr) web socket
+  networking.firewall.allowedTCPPorts = [ 22 1122 3000 4001 4200 8080 8801 50001 ];
 
   # 60000 - 60100 - mosh
   networking.firewall.allowedUDPPortRanges = [ {from = 60000; to = 60100;} ];

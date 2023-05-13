@@ -19,3 +19,6 @@
 [submodule "Lightning/lightning"]
 	path = Lightning/lightning
 	url = https://github.com/ElementsProject/lightning
+[submodule "Nostr/primal-caching-service"]
+	path = Nostr/primal-caching-service
+	url = https://github.com/PrimalHQ/primal-caching-service

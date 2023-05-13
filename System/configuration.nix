@@ -13,6 +13,6 @@
       ./ssh.nix
       ../serviceconfig.nix
     ];
-  environment.systemPackages = with pkgs; [ vim less git ];
+  environment.systemPackages = with pkgs; [ vim less git firefox];
   nix.settings.experimental-features = ["nix-command" "flakes"];
 }
