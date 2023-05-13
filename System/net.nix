@@ -3,12 +3,26 @@
 {
   # System packages
   environment.systemPackages = with pkgs; [
-    pkgs.protonvpn-cli
+    protonvpn-cli
   ];
 
   # Enable Networking
   networking.hostName = "lapbox"; # Define your hostname.
   networking.networkmanager.enable = true;
+
+  # 
+  security.polkit.extraConfig = ''
+    polkit.addRule(function(action, subject) {
+      if (
+        subject.isInGroup("networkmanager")
+          && (action.id.indexOf("org.freedesktop.NetworkManager.") == 0 ||
+              action.id.indexOf("org.freedesktop.login1") == 0)
+        )
+      {
+        return polkit.Result.YES;
+      }
+    })
+  '';
 
   # Configure network proxy if necessary
   # networking.proxy.default = "http://user:password@proxy:port/";
@@ -44,12 +58,4 @@
 
   # 60000 - 60100 - mosh
   networking.firewall.allowedUDPPortRanges = [ {from = 60000; to = 60100;} ];
-
-  # Proton-CLI. Login, connect, enable killswitch.
-  boot.postBootCommands = ''
-    protonvpn-cli killswitch --off
-    protonvpn-cli login
-    protonvpn-cli connect --tor
-    protonvpn-cli killswitch --on
-  '';
 }
