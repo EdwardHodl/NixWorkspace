@@ -16,6 +16,6 @@
       ../serviceconfig.nix
     ];
   
-  environment.systemPackages = with pkgs; [ vim less git firefox];
+  environment.systemPackages = with pkgs; [ vim less git firefox protonvpn-gui ];
   nix.settings.experimental-features = ["nix-command" "flakes"];
 }
