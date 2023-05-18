@@ -22,3 +22,12 @@
 [submodule "Nostr/primal-caching-service"]
 	path = Nostr/primal-caching-service
 	url = https://github.com/PrimalHQ/primal-caching-service
+[submodule "GPT/gpt4all"]
+	path = GPT/gpt4all
+	url = https://github.com/nomic-ai/gpt4all
+[submodule "GPT/gpt4all-nix"]
+	path = GPT/gpt4all-nix
+	url = https://github.com/EdwardHodl/gpt4all-nix
+[submodule "GPT/LlamaGPTJ-chat"]
+	path = GPT/LlamaGPTJ-chat
+	url = https://github.com/kuvaus/LlamaGPTJ-chat
