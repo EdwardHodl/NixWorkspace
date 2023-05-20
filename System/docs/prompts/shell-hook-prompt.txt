@@ -1,0 +1,13 @@
+Generate a shell-script that puts manual documentation information into terminal when executing  nix-shell.
+Include:  build instructions, executable paths, usage instructions for executables, configuration paths such as the data-dir, configuration instructions, clean-up instructions.
+Also include anything else you feel pertinent to a developer.
+Be very concise with your documentation, but use one-line ASCII text banners to isolate the documentation in the terminal.
+Only include the shellHook portion of the configuration.
+Include a reference to the project's source location.
+Closely align your documentation to the project's documentation such as the readme, but be very concise:
+
+Source location:
+<SOURCE LOCATION>
+
+Readme File:
+<README FILE>
