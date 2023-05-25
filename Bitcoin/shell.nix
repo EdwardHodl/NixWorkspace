@@ -49,10 +49,6 @@ pkgs.mkShell {
 # https://github.com/bitcoin/bitcoin/blob/master/doc/bitcoin-conf.md
   shellHook =
   ''
-    alias bitcoind='/home/edward/NixWorkspace/Bitcoin/bitcoin/src/bitcoind -datadir=/home/edward/NixWorkspace/Bitcoin/data/ -conf=/home/edward/NixWorkspace/Bitcoin/bitcoin.conf -walletdir=/home/edward/NixWorkspace/Bitcoin/secret/ -debuglogfile=/home/edward/NixWorkspace/Bitcoin/log/bitcoincore.log'
-    alias bitcoin-cli='/home/edward/NixWorkspace/Bitcoin/bitcoin/src/bitcoin-cli -datadir=/home/edward/NixWorkspace/Bitcoin/data/ -conf=/home/edward/NixWorkspace/Bitcoin/bitcoin.conf'
-    alias
-
     echo "Hello shell"
     echo "In Nix Shell: $IN_NIX_SHELL"
     echo "Running on system: $CURRENT_SYSTEM"
@@ -91,6 +87,11 @@ pkgs.mkShell {
   echo "  - Clean the build directory: make clean"
   echo "  - Remove generated files from the configure script: make distclean"
   echo "────────────────────────────────────────"
+
+    alias bitcoind='/home/edward/NixWorkspace/Bitcoin/bitcoin/src/bitcoind -datadir=/home/edward/NixWorkspace/Bitcoin/data/ -conf=/home/edward/NixWorkspace/Bitcoin/bitcoin.conf -walletdir=/home/edward/NixWorkspace/Bitcoin/secret/ -debuglogfile=/home/edward/NixWorkspace/Bitcoin/log/bitcoincore.log'
+    alias bitcoin-cli='/home/edward/NixWorkspace/Bitcoin/bitcoin/src/bitcoin-cli -datadir=/home/edward/NixWorkspace/Bitcoin/data/ -conf=/home/edward/NixWorkspace/Bitcoin/bitcoin.conf'
+    alias bcli='bitcoin-cli'
+    alias
 
   '';
 }
