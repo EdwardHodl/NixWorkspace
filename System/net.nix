@@ -1,9 +1,8 @@
 { config, pkgs, ... }:
 
 {
-  # System packages
-  environment.systemPackages = with pkgs; [
-    protonvpn-cli
+  imports = [
+    ./net/privatenet.nix
   ];
 
   # Enable Networking
