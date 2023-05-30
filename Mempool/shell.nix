@@ -79,7 +79,7 @@ echo "   npm run config:defaults:mempool && npm run cypress:open"
 echo ""
 echo "======================================"
 alias mempoolbackend='cd mempool/backend && npm run start'
-alias mempoolfrontend='cd mempool/frontend && npm run serve'
+alias mempoolfrontend='cd mempool/frontend && npm run serve:local-prod'
 alias
   '';
 }
