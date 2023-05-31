@@ -80,7 +80,10 @@ echo ""
 echo "======================================"
 alias mempoolbackend='cd mempool/backend && npm run start'
 alias mempoolfrontend='cd mempool/frontend && npm run serve:local-prod'
-alias
+alias install='npm install'
+alias build='npm run build'
+alias start='npm run start'
+alias 
   '';
 }
 

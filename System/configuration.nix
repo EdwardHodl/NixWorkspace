@@ -10,6 +10,7 @@
       # enabled with adding the nixos-hardware channel.
       <nixos-hardware/lenovo/thinkpad/e495/default.nix>
 
+      ./secret.nix
       ./power.nix
       ./net.nix
       ./ssh.nix

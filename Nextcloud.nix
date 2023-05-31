@@ -85,11 +85,11 @@
     # https = true;
 
     # Auto-update Nextcloud Apps
-    autoUpdateApps.enable = false; # true;
+    autoUpdateApps.enable = true;
     autoUpdateApps.startAt = "00:00:00";
 
     extraApps = with pkgs.nextcloud26Packages.apps; {
-      inherit mail news contacts unsplash files_texteditor deck calendar bookmarks; #files_markdown
+      inherit contacts unsplash files_texteditor deck calendar; # bookmarks mail files_markdown
     };
     extraAppsEnable = true;
 
