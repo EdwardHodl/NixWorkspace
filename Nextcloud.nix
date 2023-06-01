@@ -89,7 +89,7 @@
     autoUpdateApps.startAt = "00:00:00";
 
     extraApps = with pkgs.nextcloud26Packages.apps; {
-      inherit contacts unsplash files_texteditor deck calendar; # bookmarks mail files_markdown
+      inherit contacts unsplash files_texteditor deck calendar bookmarks mail files_markdown;
     };
     extraAppsEnable = true;
 
