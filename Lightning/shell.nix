@@ -1,7 +1,9 @@
 { pkgs ? import <nixpkgs> {} }:
 
 let
-  python3Env = pkgs.python3.withPackages (p: [p.bitcoinlib p.Mako]);
+  python3Env = pkgs.python3.withPackages (p: [p.bitcoinlib p.Mako p.coincurve p.base58 p.bitstring p.cryptography p.pysocks p.prometheus_client]);
+  lightningdir = "/home/edward/NixWorkspace/Lightning";
+  prometheusplugin = "${lightningdir}/plugins/prometheus/prometheus.py";
 in
 pkgs.mkShell {
   buildInputs = [
@@ -33,9 +35,15 @@ pkgs.mkShell {
     echo "Loaded Lightning shellHook"
     alias bitcoin-cli='/home/edward/NixWorkspace/Bitcoin/bitcoin/src/bitcoin-cli -datadir=/home/edward/NixWorkspace/Bitcoin/data/ -conf=/home/edward/NixWorkspace/Bitcoin/bitcoin.conf'
 
-    alias lightningd='/home/edward/NixWorkspace/Lightning/lightning/lightningd/lightningd --conf=/home/edward/NixWorkspace/Lightning/cln-mainnet.config --lightning-dir=/home/edward/NixWorkspace/Lightning/data'
-    alias lightning-cli='/home/edward/NixWorkspace/Lightning/lightning/cli/lightning-cli --conf=/home/edward/NixWorkspace/Lightning/cln-mainnet.config --lightning-dir=/home/edward/NixWorkspace/Lightning/data'
+    alias lightningd='${lightningdir}/lightning/lightningd/lightningd --conf=${lightningdir}/cln-mainnet.config --lightning-dir=${lightningdir}/data --plugin=${prometheusplugin}'
+    alias lightning-cli='${lightningdir}/lightning/cli/lightning-cli --conf=${lightningdir}/cln-mainnet.config --lightning-dir=${lightningdir}/data'
     alias
+
+    export PYTHONPATH=${lightningdir}/lightning/contrib/pyln-client:${lightningdir}/lightning/contrib/pyln-testing:${lightningdir}/lightning/contrib/pyln-spec/bolt7:${lightningdir}/lightning/contrib/pyln-proto:$PYTHONPATH
+    echo "Add pyln-client, pyln-testing to PYTHONPATH: $PYTHONPATH"
+
+    export PROMETHEUSPLUGIN=${prometheusplugin}
+    echo "Path to PrometheusPlugin: $PROMETHEUSPLUGIN"
 
     echo "Add SSL_CERT_FILE environment variable"
     export SSL_CERT_FILE=${pkgs.cacert}/etc/ssl/certs/ca-bundle.crt

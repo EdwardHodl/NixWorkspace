@@ -31,3 +31,6 @@
 [submodule "GPT/LlamaGPTJ-chat"]
 	path = GPT/LlamaGPTJ-chat
 	url = https://github.com/kuvaus/LlamaGPTJ-chat
+[submodule "Lightning/plugins"]
+	path = Lightning/plugins
+	url = https://github.com/lightningd/plugins

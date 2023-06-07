@@ -49,6 +49,10 @@
 #      sql.enable = true;
     };
 
+    globalConfig = {
+      scrape_interval = "5s";
+    };
+
     scrapeConfigs = [
       {
         job_name = "node";
@@ -60,6 +64,12 @@
         job_name = "bitcoin";
         static_configs = [{
           targets = [ "localhost:${toString config.services.prometheus.exporters.bitcoin.port}" ];
+        }];
+      }
+      {
+        job_name = "corelightning";
+        static_configs = [{
+          targets = [ "localhost:9750" ];
         }];
       }
       {
