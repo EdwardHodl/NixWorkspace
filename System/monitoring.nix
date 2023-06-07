@@ -1,6 +1,16 @@
 {config, pkgs, ... }:
 {
-  networking.firewall.allowedTCPPorts = [ 9090 9002 9003 9004 9005 9006 ];
+  networking.firewall.allowedTCPPorts = [ 9090 9002 9003 9004 9005 9006 3030 ];
+
+  services.grafana = {
+    enable = true;
+    settings.server = {
+      protocol = "http";
+      http_addr = "0.0.0.0";
+      http_port = 3030;
+      domain = "lapbox.local";
+    };
+  };
 
   services.prometheus = {
     enable = true;

@@ -21,7 +21,7 @@
      package = pkgs.photoprism;
      address = "0.0.0.0";
      port = 2342;
-     originalsPath = /var/lib/nextcloud/data;
+     originalsPath = /tmp/dummypath;
      settings = {
        PHOTOPRISM_ADMIN_USER = "root";
        PHOTOPRISM_ADMIN_PASSWORD = "test123";
