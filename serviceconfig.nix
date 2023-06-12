@@ -10,10 +10,28 @@
    services.nginx.enable = true;
    services.nextcloud.enable = true;
 
+   services.code-server.enable = true;
+   services.code-server = {
+     host = "0.0.0.0";
+     port = 4444;
+     auth = "none";
+
+     user = "edward";
+     group = "users";
+
+     # https://coder.com/docs/v2/latest/cli/server
+     extraArguments = [
+       "--disable-telemetry"
+       "--disable-getting-started-override"
+       "--disable-file-downloads"
+     ];
+   };
+
    # photoprism: TCP+UDP, 2342
    # nginx: TCP, 80 443
+   # code-server: 4444
    networking.firewall = {
-     allowedTCPPorts = [ 80 443 2342 ];
+     allowedTCPPorts = [ 80 443 2342 4444 ];
      allowedUDPPorts = [ 2342 ];
    };
 

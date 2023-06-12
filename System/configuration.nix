@@ -19,4 +19,7 @@
   
   environment.systemPackages = with pkgs; [ vim less git ];
   nix.settings.experimental-features = ["nix-command" "flakes"];
+  nixpkgs.config.permittedInsecurePackages = [
+    "nodejs-16.20.0"
+    ];
 }
