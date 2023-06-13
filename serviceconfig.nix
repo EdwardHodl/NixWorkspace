@@ -19,11 +19,16 @@
      user = "edward";
      group = "users";
 
-     # https://coder.com/docs/v2/latest/cli/server
+     # https://coder.com/docs/code-server/latest
      extraArguments = [
+       "--user-data-dir=/home/edward/NixWorkspace/IDE/data/user/"
+       "--extensions-dir=/home/edward/NixWorkspace/IDE/data/extensions/"
        "--disable-telemetry"
        "--disable-getting-started-override"
        "--disable-file-downloads"
+       "--disable-update-check"
+       "--install-extension=jnoortheen.nix-ide"
+       "--install-extension=kamadorueda.alejandra"
      ];
    };
 
