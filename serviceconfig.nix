@@ -27,8 +27,6 @@
        "--disable-getting-started-override"
        "--disable-file-downloads"
        "--disable-update-check"
-       "--install-extension=jnoortheen.nix-ide"
-       "--install-extension=kamadorueda.alejandra"
      ];
    };
 
