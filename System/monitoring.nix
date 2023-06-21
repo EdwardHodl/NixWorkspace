@@ -8,7 +8,7 @@
       protocol = "http";
       http_addr = "0.0.0.0";
       http_port = 3030;
-      domain = "lapbox.local";
+      domain = "${config.lapbox.hostname}.${config.lapbox.hostdomain}";
     };
   };
 
@@ -35,16 +35,16 @@
       nextcloud.enable = true;
       nextcloud = {
         port = 9004;
-        url = "http://lapbox.local";
+        url = "http://${config.lapbox.hostname}.${config.lapbox.hostdomain}";
         username = "prometheus";
         user = "prometheus";
-        passwordFile = /home/edward/NixWorkspace/System/Secrets/prometheus_exporter_password.txt;
+        passwordFile = /. + builtins.toPath "${config.lapbox.homedir}/${config.lapbox.workspacename}/System/Secrets/prometheus_exporter_password.txt";
       };
       bitcoin.enable = true;
       bitcoin = {
         port = 9003;
         rpcUser = "prometheus";
-        rpcPasswordFile = /home/edward/NixWorkspace/System/Secrets/prometheus_exporter_password.txt;
+        rpcPasswordFile = /. + builtins.toPath "${config.lapbox.homedir}/${config.lapbox.workspacename}/System/Secrets/prometheus_exporter_password.txt";
       };
 #      sql.enable = true;
     };

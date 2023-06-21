@@ -6,7 +6,7 @@
   ];
 
   # Enable Networking
-  networking.hostName = "lapbox"; # Define your hostname.
+  networking.hostName = "${config.lapbox.hostname}"; # Define your hostname.
   networking.networkmanager.enable = true;
 
   # 
@@ -36,7 +36,7 @@
     nssmdns = true;
     wideArea = false;
     reflector = true;
-    domainName = "local";
+    domainName = "${config.lapbox.hostdomain}";
     publish = {
       enable = true;
       addresses = true;

@@ -1,8 +1,8 @@
-{ pkgs ? import <nixpkgs> {} }:
+{ pkgs ? import <nixpkgs> {}, config}:
 
 let
   python3Env = pkgs.python3.withPackages (p: [p.bitcoinlib p.Mako p.coincurve p.base58 p.bitstring p.cryptography p.pysocks p.prometheus_client]);
-  lightningdir = "/home/edward/NixWorkspace/Lightning";
+  lightningdir = "${${lapbox.homedir}}/NixWorkspace/Lightning";
   prometheusplugin = "${lightningdir}/plugins/prometheus/prometheus.py";
 in
 pkgs.mkShell {
@@ -33,7 +33,7 @@ pkgs.mkShell {
 
   shellHook = ''
     echo "Loaded Lightning shellHook"
-    alias bitcoin-cli='/home/edward/NixWorkspace/Bitcoin/bitcoin/src/bitcoin-cli -datadir=/home/edward/NixWorkspace/Bitcoin/data/ -conf=/home/edward/NixWorkspace/Bitcoin/bitcoin.conf'
+    alias bitcoin-cli='${lapbox.homedir}/NixWorkspace/Bitcoin/bitcoin/src/bitcoin-cli -datadir=${lapbox.homedir}/NixWorkspace/Bitcoin/data/ -conf=${lapbox.homedir}/NixWorkspace/Bitcoin/bitcoin.conf'
 
     alias lightningd='${lightningdir}/lightning/lightningd/lightningd --conf=${lightningdir}/cln-mainnet.config --lightning-dir=${lightningdir}/data --plugin=${prometheusplugin}'
     alias lightning-cli='${lightningdir}/lightning/cli/lightning-cli --conf=${lightningdir}/cln-mainnet.config --lightning-dir=${lightningdir}/data'

@@ -1,4 +1,4 @@
-{ pkgs ? import <nixpkgs> {} }:
+{ pkgs ? import <nixpkgs> {}, config}:
 
 pkgs.mkShell {
   buildInputs = [
@@ -14,20 +14,20 @@ pkgs.mkShell {
   # https://github.com/Ride-The-Lightning/RTL/blob/master/.github/docs/Application_configurations.md
   shellHook = ''
 
-  export RTL_CONFIG_PATH="/home/edward/NixWorkspace/RTL"
+  export RTL_CONFIG_PATH="${config.lapbox.homedir}/${config.lapbox.workspacename}/RTL"
   echo "export RTL_CONFIG_PATH to $RTL_CONFIG_PATH. (looks for RTL-Config.json)"
 
-  export BITCOIND_CONFIG_PATH="/home/edward/NixWorkspace/Bitcoin"
+  export BITCOIND_CONFIG_PATH="${config.lapbox.homedir}/${config.lapbox.workspacename}/Bitcoin"
   echo "export BITCOIND_CONFIG_PATH to $BITCOIND_CONFIG_PATH"
 
   echo "Create data dir if needed."
-  mkdir -p /home/edward/NixWorkspace/RTL/data
+  mkdir -p ${config.lapbox.homedir}/${config.lapbox.workspacename}/RTL/data
 
-  export CHANNEL_BACKUP_PATH="/home/edward/NixWorkspace/RTL/data"
+  export CHANNEL_BACKUP_PATH="${config.lapbox.homedir}/${config.lapbox.workspacename}/RTL/data"
   echo "export CHANNEL_BACKUP_PATH to $CHANNEL_BACKUP_PATH"
 
-  export DB_DIRECTORY_PATH="/home/edward/NixWorkspace/RTL/data"
-  echo "export DB_DIRECTORY_PATH="/home/edward/NixWorkspace/RTL/data""
+  export DB_DIRECTORY_PATH="${config.lapbox.homedir}/${config.lapbox.workspacename}/RTL/data"
+  echo "export DB_DIRECTORY_PATH=$DB_DIRECTORY_PATH"
 
   echo "-------------------------------------------"
   echo "            C-Lightning-REST               "

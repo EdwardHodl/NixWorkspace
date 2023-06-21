@@ -72,7 +72,7 @@
       Type="simple";
       ExecStart="${pathToExec}";
       Restart="always";
-      User=config.users.users.edward.name;
+      User="${config.lapbox.username}";
     };
   };
 }

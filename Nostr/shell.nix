@@ -15,7 +15,7 @@ stdenv.mkDerivation {
     export PRIMALSERVER_HOST="0.0.0.0"
     echo "set PRIMALSERVER_HOST to $PRIMALSERVER_HOST (bind to all LAN)"
 
-    export PRIMALSERVER_STORAGE_PATH="/home/edward/Nostr/data"
+    export PRIMALSERVER_STORAGE_PATH="${config.lapbox.homedir}/${config.lapbox.workspacename}/Nostr/data"
     echo "set PRIMALSERVER_STORAGE_PATH to $PRIMALSERVER_STORAGE_PATH"
 
     alias primal="nix develop -c sh -c '\$start_primal_caching_service'"

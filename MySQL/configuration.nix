@@ -6,18 +6,18 @@
 
   # ensure dataDir is created by mysql
   systemd.tmpfiles.rules = [
-    "d /home/edward/NixWorkspace/MySQL/data 0755 edward users - -"
+    "d ${config.lapbox.homedir}/${config.lapbox.workspacename}/MySQL/data 0755 ${config.lapbox.username} ${config.lapbox.groupname} - -"
   ];
  
   services.mysql = {
     enable = true;
     package = pkgs.mariadb;
-    user="edward";
+    user="${config.lapbox.username}";
     configFile = pkgs.writeText "my.cnf" ''
       [mysqld]
-      datadir=/home/edward/NixWorkspace/MySQL/data
+      datadir=${config.lapbox.homedir}/${config.lapbox.workspacename}/MySQL/data
       port=3306
-      user=edward
+      user=${config.lapbox.username}
     '';
 
     ensureDatabases = [ "mempool" ];    

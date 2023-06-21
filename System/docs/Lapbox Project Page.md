@@ -1,8 +1,6 @@
-- #lapbox
-- [[Lapbox Journal]]
+- # lapbox
 - # 1. Overview
 - ## Motivation
-  collapsed:: true
 	- I want a hybrid node and developer desktop.
 	- I want to help bring about Bitcoin (and layer-2 et al) developers.
 	- I want to learn self-hosting myself.
@@ -14,28 +12,23 @@
 	- I want it decentralized as possible.
 	- I want less dependencies on development. e.g. No Docker!. no accounts needed.
 - ## Vision
-  collapsed:: true
 	- Any Computer, bootstrap into my own server (sans data, of course)
 	- It is the center of the network, and we will move with it.
 	- ~80% Web Services moved to Local Services.
 	- Host local AI, in terminal.
 - ## Principles
 	- Decentralization is the answer. Self-Host everything.
-	  collapsed:: true
 		- Always on.
 		- Build from source if possible, always.
 		- Itself is free and open source, even to the AIs.
 	- Keep it simple, silly.
-	  collapsed:: true
 		- Security, macro to micro. Secure the whole network before securing per application. Encrypt the whole disk.
 		- Simple folder structures. No unnecessary layers between the OS and a service.
 		- Don't create layers between the code/configuration and the operation of the service
 	- Do not encumber the development progress, within reason of course.
-	  collapsed:: true
 		- Provide the consistent framework for changes, but don't be so restrictive
 		- The project is aimed for learning developers and learning operators. 'Learn as you go' is the point.
 	- Severity: Mini-Production.
-	  collapsed:: true
 		- There will be a bit of Bitcoin on it.
 		- There will be personal data on it. I will depend on it every day. My family we will depend on it within our household. My daughter will be using it without her knowing. A new Bitcoin developer may be using it. It's a good, sound computing model
 		- Itself is not a general purpose, device. No browsing or idling. It's business time, sort of.
@@ -67,7 +60,6 @@
 - # 2. Design
 - ## High-Level. Hardware and Network
 	- ### Used Thinkpads as Servers.
-	  collapsed:: true
 		- Built-in battery for power backup.
 		- Dual-storage drives for disk backup.
 		- Ethernet and wifi for network backup.
@@ -77,16 +69,13 @@
 			- Makes it a lower cost option due to wholesale and company asset liquidation
 		- Modular and fixable components. Be your own IT department. Source parts to replace.
 	- ### Secure in Broad Strokes.
-	  collapsed:: true
 		- Encrypt the Harddisk.
 		- VPN the network interface.
 		- Use a Hardware Wallet. Externalize the cryptographic keys.
 	- ### Give it a name.
-	  collapsed:: true
 		- mDNS, Pegging the host of the lapbox.  e.g. lapbox.local
 		- Set the system's timezone.
 	- ### Alternative options.
-	  collapsed:: true
 		- Micro form factor PCs plugged into the router. But no screen, no inputs, hard-wired power, might not have wifi. Also inexpensive and plentiful though. Available off the shelf, or from the bin.
 		- Fuck single board computers as servers.
 - ## High-Level. Software and Configuration
@@ -103,7 +92,6 @@
 	- ### Application Execution
 		- Services architecture with systemd.
 	- ### Interfacing with the Computer
-	  collapsed:: true
 		- Assume that the screen is not used. It is a monitoring terminal or splash screen. System could be a headless box.
 		- SSH mainly. Use TMux sessions as the desktop environment Persist the sessions, and always attach to them, one-session-per-user. MOSH to improve the desktop experience.
 		- While coding, the SuperProject can be rsync-ed to the host to transfer changes. Lean on Nix providing reproducible build environments. Changes can be immediately tested in an live execution environment.
@@ -120,11 +108,8 @@
 		- The NixOS partition is a grouped volume, and setup for Raid.
 		- The Raid1 system is then mounted during one of the 2 boot sequences.
 	- It's undecided at this time the separation of 'personal home services data (like files and photos and notes)' and 'financial services data (like the timechain, or channel states)'. Following the KISS principle, let's go with 'lump it together'. and migration can occur later when we decide what to do.
-	- {{tweet https://twitter.com/wtogami/status/1654513030519226368}}
+	- "Software RAID for the entire disk including boot loader has some big warnings that are difficult to explain. You're better off using btrfs installing one big drive then make particular important directories like LN database raid-1 with a smaller disk. This is the easiest path." - tweet#1654513030519226368
 	- #[[Lapbox Data Classification]]
-	-
-	-
-	-
 -
 - ## NixOS Configuration
 	- NixOS is a system configuration at `/etc/nixos/`
@@ -280,4 +265,3 @@
 		- A splash screen with the time, date, and the weather.
 		- Mempool visualizer
 		- Channel status visualizer.
-- {{embed ((644969cb-9b82-4826-a6a1-56cea952c318))}}

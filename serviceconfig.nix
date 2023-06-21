@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, pkgs, options, ... }:
 
 {
    imports = [
@@ -16,13 +16,13 @@
      port = 4444;
      auth = "none";
 
-     user = "edward";
-     group = "users";
+     user = "${config.lapbox.username}";
+     group = "${config.lapbox.groupname}";
 
      # https://coder.com/docs/code-server/latest
      extraArguments = [
-       "--user-data-dir=/home/edward/NixWorkspace/IDE/data/user/"
-       "--extensions-dir=/home/edward/NixWorkspace/IDE/data/extensions/"
+       "--user-data-dir=${config.lapbox.homedir}/NixWorkspace/IDE/data/user/"
+       "--extensions-dir=${config.lapbox.homedir}/NixWorkspace/IDE/data/extensions/"
        "--disable-telemetry"
        "--disable-getting-started-override"
        "--disable-file-downloads"
@@ -35,7 +35,7 @@
    # code-server: 4444
    networking.firewall = {
      allowedTCPPorts = [ 80 443 2342 4444 ];
-     allowedUDPPorts = [ 2342 ];
+     allowedUDPPorts = [ 2342 4444 ];
    };
 
    services.photoprism = {
@@ -50,7 +50,7 @@
        PHOTOPRISM_DISABLE_SLS = "true";
        PHOTOPRISM_AUTH_MODE = "public";
        PHOTOPRISM_DEFAULT_LOCALE = "en";
-       PHOTOPRISM_HTTP_HOSTNAME = "lapbox";
+       PHOTOPRISM_HTTP_HOSTNAME = "${config.lapbox.hostname}";
      };
    };
 
@@ -107,7 +107,7 @@
 
     # Setup Nextcloud virtual host to listen on ports
     virtualHosts = {
-      "lapbox.local" = {
+      "${config.lapbox.hostname}.${config.lapbox.hostdomain}" = {
         listenAddresses = [ "0.0.0.0" ];
         ## Force HTTP redirect to HTTPS
         # forceSSL = true;
@@ -121,7 +121,7 @@
 
   # The Nextcloud service
   services.nextcloud = {
-    hostName = "lapbox.local";
+    hostName = "${config.lapbox.hostname}.${config.lapbox.hostdomain}";
     package = pkgs.nextcloud26;
 
     # change paths to home dir

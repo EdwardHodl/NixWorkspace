@@ -1,4 +1,4 @@
-{ pkgs ? import <nixpkgs> { } }:
+{ pkgs ? import <nixpkgs> { }, config }:
 
 # Dependencies from bitcoin/bitcoin
 # https://github.com/bitcoin/bitcoin/blob/master/doc/dependencies.md
@@ -88,10 +88,9 @@ pkgs.mkShell {
   echo "  - Remove generated files from the configure script: make distclean"
   echo "────────────────────────────────────────"
 
-    alias bitcoind='/home/edward/NixWorkspace/Bitcoin/bitcoin/src/bitcoind -datadir=/home/edward/NixWorkspace/Bitcoin/data/ -conf=/home/edward/NixWorkspace/Bitcoin/bitcoin.conf -walletdir=/home/edward/NixWorkspace/Bitcoin/secret/ -debuglogfile=/home/edward/NixWorkspace/Bitcoin/log/bitcoincore.log'
-    alias bitcoin-cli='/home/edward/NixWorkspace/Bitcoin/bitcoin/src/bitcoin-cli -datadir=/home/edward/NixWorkspace/Bitcoin/data/ -conf=/home/edward/NixWorkspace/Bitcoin/bitcoin.conf'
-    alias bcli='bitcoin-cli'
-    alias
-
+  alias bitcoind='${lapbox.homedir}/NixWorkspace/Bitcoin/bitcoin/src/bitcoind -datadir=${lapbox.homedir}/NixWorkspace/Bitcoin/data/ -conf=${lapbox.homedir}/NixWorkspace/Bitcoin/bitcoin.conf -walletdir=${lapbox.homedir}/NixWorkspace/Bitcoin/secret/ -debuglogfile=${lapbox.homedir}/NixWorkspace/Bitcoin/log/bitcoincore.log'
+  alias bitcoin-cli='${lapbox.homedir}/NixWorkspace/Bitcoin/bitcoin/src/bitcoin-cli -datadir=${lapbox.homedir}/NixWorkspace/Bitcoin/data/ -conf=${lapbox.homedir}/NixWorkspace/Bitcoin/bitcoin.conf'
+  alias bcli='bitcoin-cli'
+  alias
   '';
 }

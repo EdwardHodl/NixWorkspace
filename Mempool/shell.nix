@@ -19,7 +19,7 @@ pkgs.mkShell {
   shellHook = ''
 
 
-    export MEMPOOL_CONFIG_FILE="/home/edward/NixWorkspace/Mempool/mempool-config.json"
+    export MEMPOOL_CONFIG_FILE="${config.lapbox.homedir}/${config.lapbox.workspacename}/Mempool/mempool-config.json"
     echo "Set MEMPOOL_CONFIG_FILE to $MEMPOOL_CONFIG_FILE"
 
     # Add any shell customizations here, e.g.:

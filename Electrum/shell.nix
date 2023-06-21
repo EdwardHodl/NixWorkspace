@@ -2,7 +2,7 @@
     overlays = [
       (import (fetchTarball "https://github.com/oxalica/rust-overlay/archive/master.tar.gz"))
     ];
-} }:
+}, config}:
 
 with pkgs;
 
@@ -27,7 +27,7 @@ mkShell {
   ];
 
   shellHook = ''
-  alias electrs='/home/edward/NixWorkspace/Electrum/electrs/target/release/electrs --conf=/home/edward/NixWorkspace/Electrum/config.toml --db-dir=/home/edward/NixWorkspace/Electrum/data/'
+  alias electrs='${config.lapbox.homedir}/${config.lapbox.workspacename}/Electrum/electrs/target/release/electrs --conf=${config.lapbox.homedir}/${config.lapbox.workspacename}/Electrum/config.toml --db-dir=${config.lapbox.homedir}/${config.lapbox.workspacename}/Electrum/data/'
   alias
 
   export LIBCLANG_PATH="${llvmPackages.libclang.lib}/lib"

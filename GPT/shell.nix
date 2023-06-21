@@ -1,4 +1,4 @@
-{ pkgs ? import <nixpkgs> {}, ... }:
+{ pkgs ? import <nixpkgs> {}, config }:
 
 pkgs.mkShell {
   name = "GPTShell";
@@ -32,19 +32,17 @@ shellHook = ''
   echo "-------------------------- Executable Paths & Usage ----------------------------"
   echo "The executable is located at: build/bin/chat"
   echo "To use the executable with 4 threads, run:"
-  echo "./chat -m \"/home/edward/NixWorkspace/GPT/data/models/your_model.bin\" -t 4"
+  echo "./chat -m \"${lapbox.homedir}/NixWorkspace/GPT/data/models/your_model.bin\" -t 4"
   echo
   echo "----------------------------- Configuration Paths ------------------------------"
-  echo "Model location: /home/edward/NixWorkspace/GPT/data/models/"
+  echo "Model location: ${lapbox.homedir}/NixWorkspace/GPT/data/models/"
   echo
   echo "================================================================================"
 
-  alias gptjchatdir="cd /home/edward/NixWorkspace/GPT/LlamaGPTJ-chat"
+  alias gptjchatdir="cd ${lapbox.homedir}/NixWorkspace/GPT/LlamaGPTJ-chat"
   alias gptjchatbuild="mkdir -p build && cd build && cmake .. --fresh && cmake --build . --parallel"
-  alias modelsdir="cd /home/edward/NixWorkspace/GPT/data/models"
-  alias chat="/home/edward/NixWorkspace/GPT/LlamaGPTJ-chat/build/bin/chat"
+  alias modelsdir="cd ${lapbox.homedir}/NixWorkspace/GPT/data/models"
+  alias chat="${lapbox.homedir}/NixWorkspace/GPT/LlamaGPTJ-chat/build/bin/chat"
   alias
 '';
-
-
 }

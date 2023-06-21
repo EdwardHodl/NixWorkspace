@@ -8,7 +8,7 @@
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
-      /home/edward/NixWorkspace/System/configuration.nix
+      ${config.lapbox.homedir}+"/"+${config.lapbox.workspacename} + /System/configuration.nix
     ];
 
   boot.kernelPackages = pkgs.linuxPackages_latest;
@@ -21,7 +21,7 @@
   boot.loader.efi.canTouchEfiVariables = true;
 
 
-  networking.hostName = "lapbox"; # Define your hostname.
+  networking.hostName = ${config.lapbox.hostname}; # Define your hostname.
   # Pick only one of the below networking options.
   #networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
   networking.networkmanager.enable = true;  # Easiest to use and most distros use this by default.
@@ -71,7 +71,7 @@
   services.xserver.libinput.enable = true;
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
-  users.users.edward = {
+  users.users.${config.lapbox.username} = {
     isNormalUser = true;
     extraGroups = [ "wheel" ]; # Enable ‘sudo’ for the user.
     packages = with pkgs; [

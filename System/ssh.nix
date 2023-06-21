@@ -13,7 +13,7 @@
   #'';
 
   environment.shellAliases = {
-    attach = "/home/edward/NixWorkspace/System/tmux_attach.sh";
+    attach = "${config.lapbox.homedir}/${config.lapbox.workspacename}/System/tmux_attach.sh";
    };
 
   # Enable mosh. Opens UDP ports 60000 ... 61000
